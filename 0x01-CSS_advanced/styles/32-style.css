@@ -66,7 +66,7 @@
     --header-logo-link-top: -1rem;
     --header-logo-link-left: 0;
 
-    --transition-duration: .3s;
+    --transition-duration: 0.3s;
     --transition-cubic-bezier: cubic-bezier(0.17, 0.67, 0, 1.01)
 }
 
@@ -97,17 +97,17 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: var(--font-weight-bold);
 
 }
-a :link {
+a:link {
     color: var(--text-color);
     text-decoration: none;
 }
-a :visited {
+a:visited {
     font-style: italic;
 }
-a :hover {
+a:hover {
     text-decoration: underline;
 }
-a :active {
+a:active {
     background-color: var(--color-light-grey);
 }
 .button{
@@ -128,6 +128,7 @@ a :active {
 .visually-hidden {
     display: none;
 }
+
 
 .section{
     padding-left: var(--section-padding);
@@ -189,7 +190,7 @@ a :active {
     text-align: center;
 }
 
-.nav-item .nav {
+.nav .nav-item  {
     font-family: var(--nav-item-font-family);
     font-weight: var(--nav-item-font-weight);
     font-size: var(--nav-item-font-size);
@@ -198,13 +199,13 @@ a :active {
     margin: var(--nav-item-margin);
 }
 
-.nav-link .nav {
+.nav .nav-link  {
     display:block;
     padding: 0.5rem, 1rem;
 
 }
 
-.nav-link:hover .nav {
+.nav .nav-link:hover {
     color: var(--nav-item-link-hover)
 }
 
@@ -215,16 +216,16 @@ a :active {
     left: 0;
     background-color: var(--color-white);
     width: 0;
-    height: 0.20rem;
+    height: 0.2rem;
     transition: var(–transition-duration) var(transition-cubic-bezier);
 }
 
-.nav-link::before .nav-item:hover .nav {
+.nav .nav-item:hover .nav-link::before  {
     background-color: var(--color-primary);
     width: 100%;
 }
 
-ul .row {
+ul.row {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -254,11 +255,9 @@ ul .row {
     color: var(--text-color);
 }
 
-ul .footer{
+.footer ul{
     text-align: right;
 }
-
-
 
 .footer-address {
     color: var(--text-color);
@@ -275,17 +274,17 @@ ul .footer{
     color: var(--color-primary);
 }
 
-.card-title .card-services {
+.card-services .card-title {
     margin: 0;
 }
 
-a .card-services {
+.card-services a {
     display: block;
     padding: 2rem;
     background-color: var(--color-light-grey);
 }
 
-a :hover .card-services{
+.card-services a:hover{
     color: var(--color-white);
     background-color: var(--color-primary);
     text-decoration: none;
@@ -295,21 +294,21 @@ a :hover .card-services{
     text-align: center;
 }
 
-.card-avatar .card-testimonial{
+.card-testimonial .card-avatar {
     border-radius: 50%;
     width: 10rem;
     height: 10rem;
 }
-cite .card-quote .card-testimonial{
+.card-testimonial .card-quote cite {
     display: block;
     padding-top: 1rem;
     color: var(--color-primary);
 }
-.card-quote .card-testimonial {
+.card-testimonial .card-quote {
     position: relative;
 }
 
-.card-quote::before .card-testimonial {
+.card-testimonial .card-quote::before {
     content: '\201C';
     position: absolute;
     top: -4.5rem;
@@ -323,10 +322,10 @@ cite .card-quote .card-testimonial{
     background-size: 90rem, auto;
 }
 
-.section-title .section-hero {
+.section-hero .section-title {
     margin-bottom: 5rem;
 }
-.section-inner .section-hero {
+.section-hero .section-inner {
     padding: 10rem, 40rem, 2rem, 0;
 }
 
@@ -338,7 +337,7 @@ cite .card-quote .card-testimonial{
     position: var(--header-logo-position);
 }
 
-a .header-logo {
+.header-logo a {
     display: var(--header-logo-link-display);
     position: var(--header-logo-link-position);
     top: var(--header-logo-link-top);
@@ -347,11 +346,11 @@ a .header-logo {
 
 
 
-.card-outer .card-work {
+.card-work .card-outer  {
     position: relative;
     overflow: hidden;
 }
-.card-image img .card-work {
+.card-work .card-image img  {
     height: 30rem;
     width: 100%;
     object-fit: cover;
@@ -371,7 +370,7 @@ a .header-logo {
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.card-title .card-work {
+.card-work .card-title  {
     text-align: center;
     margin: 0;
     opacity: 0;
@@ -379,13 +378,13 @@ a .header-logo {
     position: relative;
 }
 
-.card-title .card-work a {
+.card-work .card-title a {
     display: block;
     text-decoration: none;
     padding-top: 45%;
 }
 
-a::after .card-title .card-work {
+.card-work .card-title a::after  {
     position: absolute;
     top:0;
     bottom: 0;
@@ -393,11 +392,11 @@ a::after .card-title .card-work {
     right: 0;
     content: "";
 }
-.card-title .card-work:hover {
+.card-work:hover .card-title  {
     opacity: 1;
 }
 
-.card-outer .card-work:hover {
+.card-work:hover .card-outer {
     transform: scale(.95);
 }
 
