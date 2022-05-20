@@ -287,9 +287,6 @@ ul.row {
     padding-top: 1rem;
     color: var(--color-primary);
 }
-.card-testimonial .card-quote {
-    position: relative;
-}
 
 
 .section-hero {
@@ -391,6 +388,9 @@ ul.row {
 .card-work:hover .card-image {
     transform: scale(1.2);
     transition: var(–transition-duration) var(transition-cubic-bezier);
+}
+.card-testimonial .card-quote {
+    position: relative;
 }
 
 .card-testimonial .card-quote::before {
