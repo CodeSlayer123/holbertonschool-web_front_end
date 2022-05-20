@@ -7,12 +7,7 @@
     box-sizing: border-box;
 }
 
-[data-section-theme='dark'] {
-    --text-color: var(--color-white);
-    --section-title-color: var(--color-white);
-    background: var(--color-black);
-    --button-color: var(--color-white);
-}
+
 
 html {
     scroll-behavior: smooth;
@@ -243,6 +238,13 @@ ul.row {
 [class*='col-'] {
     float: left;
     padding: 0.5rem;
+}
+
+[data-section-theme='dark'] {
+    --text-color: var(--color-white);
+    --section-title-color: var(--color-white);
+    background: var(--color-black);
+    --button-color: var(--color-white);
 }
 
 .footer-address {
