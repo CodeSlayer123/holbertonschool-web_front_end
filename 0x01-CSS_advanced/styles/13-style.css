@@ -14,22 +14,23 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: var(--font-weight-bold);
 
 }
-a :link {
+a:link {
     color: var(--text-color);
     text-decoration: none;
 }
-a :visited {
+a:visited {
     font-style: italic;
 }
-a :hover {
+a:hover {
     text-decoration: underline;
 }
-a :active {
+a:active {
     background-color: var(--color-light-grey);
 }
 .visually-hidden {
     display: none;
 }
+
 .card-category {
     color: var(--color-primary);
 }
