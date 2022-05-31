@@ -1,0 +1,16 @@
+/* My Scss */
+
+$color: #FF0000;
+$hover: #00FF00;
+
+
+body {
+    font-size: 14px;
+    h1 {
+        font-size: 16px;
+        &.smaller {
+            font-size: 12px;
+        }
+    }
+
+}

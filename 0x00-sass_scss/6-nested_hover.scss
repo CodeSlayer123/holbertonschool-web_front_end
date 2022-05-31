@@ -1,0 +1,12 @@
+/* My Scss */
+
+$color: #FF0000;
+$hover: #00FF00;
+
+
+button {
+    color: $color;
+    &:hover {
+        color: $hover;
+    }
+}

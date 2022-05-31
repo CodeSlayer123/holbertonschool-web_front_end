@@ -1,0 +1,10 @@
+/* My Scss */
+
+body {
+    $color: #3D3D3D;
+    color: $color;
+    .red {
+        $color: #FF0000;
+        color: $color;
+    }
+}
