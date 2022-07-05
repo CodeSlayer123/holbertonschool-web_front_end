@@ -1,0 +1,60 @@
+.btn-primary {
+    background-color: #E0003C;
+    border-color: #E0003C;
+}
+.btn-primary:focus, .btn-outline-primary:focus {
+	box-shadow: 0 0 0 0;
+}
+.btn-primary:hover {
+    background-color: #BC1340;
+    border-color: #E0003C;
+
+}
+.btn-primary:focus {
+    background-color: #E0003C;
+}
+
+.btn-primary:active {
+    box-shadow: #E0003C !important;
+}
+
+
+
+.btn-outline-primary {
+    color: #E0003C;
+    border-color: #E0003C;
+}
+.btn-outline-primary:hover {
+    background-color: #E0003C;
+    border-color: #E0003C;
+    color: #fff !important;
+}
+.btn-outline-primary:focus {
+    background-color: #E0003C;
+    color: #fff !important;
+}
+
+.border-bottom{
+    border-color: #E0003C !important;
+}
+
+a, a:hover, a:focus {
+    color: #E0003C !important;
+    
+}
+
+.text-muted {
+    color: #8C8C8C;
+}
+
+.card-header {
+    background-color: #E0003C;
+    color: #fff;
+}
+
+
+[class^="card"] {
+	border-color: #E0003C;
+	border-radius: 1rem;
+    overflow: hidden;
+}
