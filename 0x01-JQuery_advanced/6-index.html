@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 5</title>
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+        crossorigin="anonymous"></script>
+
+        <script type="application/javascript">
+            var counter = 1;
+            
+            function createFamilyTree(){
+
+                $( "body" ).append( '<table></table>')
+                $( "table" ).append( '<thead></thead>')
+                $( "thead" ).append( '<tr></tr>')
+                $( "tr" ).append( '<th>Firstname</th>')
+                $( "tr" ).append( '<th>Lastname</th>')
+
+                $( "table" ).append( '<tbody></tbody>')
+            }
+            function addNewMember(firstName, lastName, position){
+                var close = $('<td>(x)</td>');
+                close.css('background-color', 'orange')
+                close.click(function(){
+                    $( this ).parent('tr').remove()
+                })
+                if (position == "Before"){
+                    $( "tbody" ).prepend( '<tr><td>' + firstName + '</td> <td>' + lastName + '</td></tr>')
+                    $( close).insertAfter($( "tbody tr td").eq(1))
+                    counter+=3;
+                }
+                else {
+                    $( "tbody" ).append( '<tr><td>' + firstName + '</td> <td>' + lastName + '</td></tr>')
+                    $( close).insertAfter($( "tbody tr td").eq(counter))
+                    counter+=3;
+                }
+
+
+            }
+
+            function createForm(){
+                var submit = $(`<input type="submit"></input>`);
+                submit.click(function(){
+                    addNewMember($('input').first().val(), $("input:nth-of-type(2)").val(),
+                    $('select').find(":selected").text())
+                })
+
+                $('table').before("<input type = text></input>", "<input type = text></input>")
+                $('input').eq(1).after(`<select>
+                    <option value="before" selected>Before</option>
+                    <option value="after">After</option>
+                    <select>`)
+                $('select').after(submit)
+
+
+            }
+
+
+            window.onload = function(){
+                createFamilyTree();
+                createForm();
+
+            }
+
+            </script>
+    </head>
+
+    <body>
+        
+
+    </body>
+
+</html>
