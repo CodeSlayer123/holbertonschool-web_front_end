@@ -24,7 +24,7 @@
                 $( "body" ).append( '<input type = text></input>')
                 $( "input" ).after(submit)
                 $( "body" ).after('<ul></ul>');
-                $( "body" ).after('<ul id=pagination></ul>');
+                $( "body" ).after('<ul class ="pageSelect" id=pagination></ul>');
 
             }
             function addNewArticle(id, title, snippet){
@@ -51,8 +51,17 @@
             function buildPagination(numberOfItems, itemsPerPage, currentOffset){
                 $( "#pagination" ).html("")
                 for (i = 1; i < (numberOfItems/itemsPerPage ); i++){
-
+                    $( 'ul' ).last().append(`<li>${i} </li>`)
+                    $( 'li' ).last().click(function () {
+                        queryWikipedia($('input').first().val(), $( this ).text() * itemsPerPage)
+                    })
                 }
+                $('.pageSelect').css({
+                    'display': 'flex', 
+                    'flex-direction': 'row', 
+                    'justify-content': 'space-between', 
+                    'list-style-type': 'none'
+                });
             }
 
             window.onload = function(){
