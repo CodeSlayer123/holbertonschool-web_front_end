@@ -4,7 +4,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Task 8</title>
+        <title>Task 9</title>
         <script
         src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
@@ -12,6 +12,11 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
+        <style>
+            .loading{
+                opacity: 0.2;
+            }
+        </style>
 
 
         <script type="application/javascript">
@@ -36,17 +41,22 @@
 
             }
             function queryWikipedia(search, offset=0){
+                displayLoading(true)
                 $.ajax({
                     type: 'GET',
                     url: `https://en.wikipedia.org/w/api.php?origin=*&action=query&list=search&srsearch=${search}&format=json`,
                     dataType: 'json',
                     offset: offset,
                     success: function(result){
+                        
                         buildPagination();
                         for(article of result.query.search)
                         addNewArticle(article.pageid, article.title, article.snippet)
+
+                       
                     }
                     });
+                    displayLoading(false);
             }
             function buildPagination(numberOfItems, itemsPerPage, currentOffset){
                 $( "#pagination" ).html("")
@@ -63,6 +73,30 @@
                     'list-style-type': 'none'
                 });
             }
+
+
+
+
+
+
+
+
+
+
+            function displayLoading(loading){
+                
+                if (loading == true){
+                    $( 'ul').first().wrap("<div class=loading></div>")
+                } else {
+                    $( 'ul').first().unwrap()
+                }
+            }
+
+
+
+
+
+
 
             window.onload = function(){
                 createSearchForm();
