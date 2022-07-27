@@ -20,14 +20,13 @@
 
                 console.log(data)
                 $( 'body' ).append(`<p id="row-${data.id}">
-                    <span id="delete">(delete)</span>
+                    <span id="${data.id}">(delete)</span>
                     <span>
                         Post created with id ${data.id}, title: ${data.title}, author: ${data.author}
                     </span>
                     </p>`)
-                $( "#delete" ).click(function(){
-                    deletePost($(this).parent().attr('id').substring(4));
-
+                $( `#${data.id}` ).click(function(){
+                    deletePost(data.id);
                 })
             }
             function listPosts(){
@@ -118,3 +117,4 @@
     </body>
 
 </html>
+Footer
