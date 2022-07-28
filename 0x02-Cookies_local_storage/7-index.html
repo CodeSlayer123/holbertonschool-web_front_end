@@ -11,9 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js" integrity="sha512-DJw15+xxGmXB1/c6pvu2eRoVCGo5s6rdeswkFS4HLFfzNQSc6V71jk6t+eMYzlyakoLTwBrKnyhVc7SCDZOK4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script type="application/javascript">
-                let availableItem = ["Shampoo", "Soap", "Sponge", "Water"]
-
-            function session_storage(){
+                function session_storage(){
                 try {
                     sessionStorage.setItem("test", "test")
                     sessionStorage.removeItem("test")
@@ -33,9 +31,12 @@
                     cart[item] = 1
                 }
                 sessionStorage.setItem("cart", JSON.stringify(cart))
+                displayCart()
 
             }
             function createStore(availableItems){
+                $("body").append("<h2>Available products:</h2>")
+
                 let list = document.createElement("ul");
                 let li;
 
@@ -50,10 +51,15 @@
                 }
             }
             function displayCart(){
-                if (sessionStorage.length > 0){
+                var elementExists = document.getElementsByTagName("div");
+                $("body").append(`<h2>Your cart:</h2>`)
 
-                    $("body").append(`<p>You previously had ${sessionStorage.length} items in your cart</p>`)
+                if (elementExists == null){
+                    $("body").append("<div></div>")
+                } else {
+                    $("div").empty()
                 }
+
 
             }
 
@@ -63,9 +69,7 @@
 /*
                 for (const [key, value] of Object.entries(sessionStorage)){
                     console.log("value is" + value)
-
                     for (let item of availableItem){
-
                         if (item == key){
                             console.log("key=" +key)
                             console.log("value" + value)
@@ -79,6 +83,45 @@
                 //console.log(obj)
                 // return cart
             }
+            function removeItemfromCart(item){
+                let cart = getCartFromStorage();
+                delete cart[item]
+                sessionStorage.setItem("cart", JSON.stringify(cart))
+
+                displayCart()
+            }
+            function clearCart(){
+                sessionStorage.clear()
+
+                displayCart()
+            }
+            function updateCart(){
+                let cart = getCartFromStorage();
+                let count = 0;
+                let clear;
+
+                $("div").append("<ul></ul>")
+                if (sessionStorage.length == 0){
+                    $("ul").last().append("<li>Your cart is empty</li>")
+
+                } else {
+                    clear = "<li>Clear my cart</li>"
+                    Clear.click(function(){
+                        clearCart()
+                    })
+                    $("ul").last().append(clear)
+                    for (let [key, value] in cart ){
+                        $("ul").last().append(`<li>${key} x ${value} </li>`)
+                        let remove = $("remove")
+                        remove.click(function(){
+
+                        })
+                        $("li").eq(count).append(remove)
+                        count++
+                    }
+
+                }
+            }
             window.onload = function(){
                 //sessionStorage.clear()
                 let availableItems = ["Shampoo", "Soap", "Sponge", "Water"]
@@ -90,7 +133,6 @@
                     alert("Sorry, your browser does not support Web storage. Try again with a better one")
                 }
             }
-
             </script>
 
 
