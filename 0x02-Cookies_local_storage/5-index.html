@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Task 5</title>
+        <meta name="description" content="Our first page">
+        <meta name="keywords" content="html tutorial template">
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js" integrity="sha512-DJw15+xxGmXB1/c6pvu2eRoVCGo5s6rdeswkFS4HLFfzNQSc6V71jk6t+eMYzlyakoLTwBrKnyhVc7SCDZOK4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script type="application/javascript">
+
+            function local_storage(){
+                try {
+                    localStorage.setItem("test", "test")
+                    localStorage.removeItem("test")
+                    return true;
+                }
+                catch(error) {
+                    return false;
+                }
+            }
+            function addItemToCart(item){
+                localStorage.setItem(item, true)
+
+            }
+            function createStore(availableItems){
+                let list = document.createElement("ul");
+                let li;
+
+                $("body").append(list)
+                for(let item of availableItems){
+                    console.log("test1")
+                    li = $(`<li>${item}</li>`)
+                    li.click(function(){
+                        addItemToCart(item)
+                    })
+                    $("ul").append(li)
+                }
+            }
+            function displayCart(){
+                if (localStorage.length > 0){
+                    $("body").append(`<p>You previously had ${localStorage.length} items in your cart</p>`)
+                }
+
+            }
+
+            window.onload = function(){
+                
+                //window.localStorage.clear()
+                let availableItems = ["Shampoo", "Soap", "Sponge", "Water"]
+                if (local_storage() == true){
+                    createStore(availableItems)
+                    displayCart()
+                } else {
+                    alert("Sorry, your browser does not support Web storage. Try again with a better one")
+                }
+            }
+
+            </script>
+
+
+    </head>
+    <body>
+    </body>
+</html>

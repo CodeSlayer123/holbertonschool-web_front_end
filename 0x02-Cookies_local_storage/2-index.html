@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Task 2</title>
+        <meta name="description" content="Our first page">
+        <meta name="keywords" content="html tutorial template">
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+        crossorigin="anonymous"></script>
+
+        <script type="application/javascript">
+            function setCookies(){
+                document.cookie = `firstname=${$('input').first().val()}; max-age=864,000,000`
+
+                document.cookie = `email=${$('input').last().val()}; max-age=864,000,000`
+
+            }
+            function showCookies(){
+                var p = document.createElement('p');
+                p.innerHTML =`<p>Email: ${getCookie('email')} - Firstname: ${getCookie('firstname')}</p>`;
+                $( "body" ).append(p);
+            }
+
+            function getCookie(name){
+                if (!name) {
+                    return ''
+                }
+                let nameEQ = name + "="
+                let ca = document.cookie.split(nameEQ)[1];
+                let cookie = ca.split(";")[0]
+                return cookie
+            }
+
+            </script>
+
+
+    </head>
+    <body>
+        <h1>Login to the website</h1>
+        <input type="text" id="firstname" name="fname">
+        <input type="text" id="email" name="femail">
+        <button onclick="setCookies()">Log me in</button>
+        <h1>Cookies</h1>
+
+        <button onclick="showCookies()">Show the cookies</button>
+
+    </body>
+</html>

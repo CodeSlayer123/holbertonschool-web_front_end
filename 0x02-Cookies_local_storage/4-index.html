@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Task 4</title>
+        <meta name="description" content="Our first page">
+        <meta name="keywords" content="html tutorial template">
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js" integrity="sha512-DJw15+xxGmXB1/c6pvu2eRoVCGo5s6rdeswkFS4HLFfzNQSc6V71jk6t+eMYzlyakoLTwBrKnyhVc7SCDZOK4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script type="application/javascript">
+            function setCookies(){
+
+                document.cookie = `firstname=${$('input').first().val()}; max-age=864,000,000`
+
+                document.cookie = `email=${$('input').last().val()}; max-age=864,000,000`
+                showWelcomeMessageOrForm()
+
+            }
+            function showCookies(){
+                var p = document.createElement('p');
+                p.innerHTML =`<p>Email: ${Cookies.get('email')} - Firstname: ${Cookies.get('firstname')}</p>`;
+                $( "body" ).append(p);
+            }
+
+
+
+
+
+            function showForm(){
+                $( "body ").html(`<div class="form">
+            <h1>Login to the website</h1>
+            <input type="text" id="firstname" name="fname">
+            <input type="text" id="email" name="femail">
+            <button onclick="setCookiesAndShowWelcomeMessage()">Log me in</button>
+        </div>`)
+
+            }
+            function hideForm(){
+                $(".form").html("")
+            }
+            function deleteCookiesAndShowForm(){
+                showForm();
+                Cookies.remove("firstname")
+                Cookie.remove("email")
+                
+            }
+            function showWelcomeMessageOrForm(){
+                if (document.cookie){
+                    hideForm()
+
+                    $( "body ").html(`<h1>Welcome: ${Cookies.get('firstname')} <a href="#"
+                        onclick="deleteCookiesAndShowForm()"
+                        style="font-weight: normal; font-style: italic; padding-left: 10px; text-decoration: none;"
+                        >(logout)</a></h1>`)
+
+                } else {
+                    showForm()
+                }
+            }
+            function setCookiesAndShowWelcomeMessage(){
+                Cookies.set("firstname", $('input').first().val(), {expires: 10})
+                Cookies.set("email", $('input').last().val(), {expires: 10})
+                showWelcomeMessageOrForm()
+            }
+            window.onload = function(){
+
+                showWelcomeMessageOrForm();
+                
+            }
+
+            </script>
+
+
+    </head>
+    <body>
+    </body>
+</html>
