@@ -51,6 +51,7 @@
             window.onload = function(){
                 
                 //sessionStorage.clear()
+                sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');
                 let availableItems = ["Shampoo", "Soap", "Sponge", "Water"]
                 if (session_storage() == true){
                     createStore(availableItems)

@@ -42,7 +42,6 @@
 
                 $("body").append(list)
                 for(let item of availableItems){
-                    console.log("test1")
                     li = $(`<li>${item}</li>`)
                     li.click(function(){
                         addItemToCart(item)
@@ -52,7 +51,6 @@
             }
             function displayCart(){
                 var elementExists = document.getElementById("cart");
-                //console.log(elementExists)
                 if (elementExists == null){
                     $("body").append(`<h2>Your cart:</h2>`)
 
@@ -66,24 +64,12 @@
             }
 
             function getCartFromStorage(){
-                console.log(sessionStorage)
-                return JSON.parse(sessionStorage.cart)
-/*
-                for (const [key, value] of Object.entries(sessionStorage)){
-                    console.log("value is" + value)
-                    for (let item of availableItem){
-                        if (item == key){
-                            console.log("key=" +key)
-                            console.log("value" + value)
-                            cart[key] = value
-                        }
-                    }
+                if (!sessionStorage.cart){
+                    return {}
                 }
-                */
-                // console.log("cart:" + cart)
-                //let obj = JSON.stringify(sessionStorage)
-                //console.log(obj)
-                // return cart
+
+                return JSON.parse(sessionStorage.cart)
+
             }
             function removeItemfromCart(item){
                 let cart = getCartFromStorage();
@@ -102,32 +88,33 @@
                 let count = 0;
                 let clear;
 
-                $("#cart").append("<ul></ul>")
+                $("#cart").append("<ul class=cart-ul></ul>")
                 if (sessionStorage.length == 0){
-                    $("ul").last().append("<li>Your cart is empty</li>")
+                    $(".cart-ul").append("<li>Your cart is empty</li>")
 
                 } else {
                     clear = $("<li>Clear my cart</li>")
                     clear.click(function(){
                         clearCart()
                     })
-                    $("ul").last().append(clear)
-                    for (let [key, value] in cart ){
-                        $("ul").last().append(`<li>${key} x ${value} </li>`)
-                        let remove = $("remove")
+                    $(".cart-ul").append(clear)
+                    for (let key in cart ){
+                        $(".cart-ul").append(`<li class="item">${key} x ${cart[key]} </li>`)
+                        let remove = $("<span>(remove)</span>")
                         remove.click(function(){
-
+                            removeItemfromCart(key)
                         })
-                        $("li").eq(count).append(remove)
+                        $(".item").eq(count).append(remove)
                         count++
                     }
 
                 }
             }
-            window.onload = function(){
-                //sessionStorage.clear()
-                let availableItems = ["Shampoo", "Soap", "Sponge", "Water"]
 
+            window.onload = function(){
+                let availableItems = ["Shampoo", "Soap", "Sponge", "Water"]
+                
+                sessionStorage.removeItem('IsThisFirstTime_Log_From_LiveServer');
                 if (session_storage() == true){
                     createStore(availableItems)
                     displayCart()
