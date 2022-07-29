@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Task 6</title>
+        <title>Task 7</title>
         <meta name="description" content="Our first page">
         <meta name="keywords" content="html tutorial template">
         <script
@@ -11,7 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookie.js" integrity="sha512-DJw15+xxGmXB1/c6pvu2eRoVCGo5s6rdeswkFS4HLFfzNQSc6V71jk6t+eMYzlyakoLTwBrKnyhVc7SCDZOK4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script type="application/javascript">
-                function session_storage(){
+                  function session_storage(){
                 try {
                     sessionStorage.setItem("test", "test")
                     sessionStorage.removeItem("test")
@@ -51,14 +51,16 @@
                 }
             }
             function displayCart(){
-                var elementExists = document.getElementsByTagName("div");
-                $("body").append(`<h2>Your cart:</h2>`)
-
+                var elementExists = document.getElementById("cart");
+                //console.log(elementExists)
                 if (elementExists == null){
-                    $("body").append("<div></div>")
+                    $("body").append(`<h2>Your cart:</h2>`)
+
+                    $("body").append("<div id=cart></div>")
                 } else {
-                    $("div").empty()
+                    $("#cart").empty()
                 }
+                updateCart()
 
 
             }
@@ -100,13 +102,13 @@
                 let count = 0;
                 let clear;
 
-                $("div").append("<ul></ul>")
+                $("#cart").append("<ul></ul>")
                 if (sessionStorage.length == 0){
                     $("ul").last().append("<li>Your cart is empty</li>")
 
                 } else {
-                    clear = "<li>Clear my cart</li>"
-                    Clear.click(function(){
+                    clear = $("<li>Clear my cart</li>")
+                    clear.click(function(){
                         clearCart()
                     })
                     $("ul").last().append(clear)
